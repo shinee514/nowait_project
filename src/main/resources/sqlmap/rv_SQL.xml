@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rv">
+<insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="rv_id">
+    <![CDATA[
+    insert into rv
+    (res_name, cust_name, rv_time, rv_date, rv_cnt, rv_chk1, rv_chk2, rv_chk3)
+    values
+    (#{res_name}, #{cust_name}, #{rv_time}, #{rv_date}, #{rv_cnt}, #{rv_chk1}, #{rv_chk2}, #{rv_chk3})
+    ]]>
+</insert>
+
+<select id="select_rv" parameterType="hashMap" resultType="hashMap">
+    <![CDATA[
+        select
+        rv_id,
+        res_name,
+        cust_name,
+        rv_time,
+        rv_date,
+        rv_cnt
+        from
+        rv
+        where
+        rv_id = #{rvId}   
+    ]]>
+</select>
+
+<delete id="delete" parameterType="hashMap">  
+<![CDATA[  
+	delete 
+	from 
+	rv  
+	where  
+	rv_id = #{rvId}  
+]]>  
+</delete>  
+
+</mapper>
